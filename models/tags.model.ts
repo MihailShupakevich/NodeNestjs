@@ -7,8 +7,8 @@ import {
   DataType,
 } from 'sequelize-typescript';
 
-@Table({ tableName: 'Users' })
-export default class User extends Model<User> {
+@Table({ tableName: 'Tags' })
+export default class Tag extends Model<Tag> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -18,11 +18,8 @@ export default class User extends Model<User> {
   id: number;
 
   @Column
-  login: string;
+  name: string;
 
-  @Column
-  password : string;
-  
   @UpdatedAt
   updatedAt: Date;
 
