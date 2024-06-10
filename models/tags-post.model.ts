@@ -9,9 +9,6 @@ import {
 
 @Table({ tableName: 'TagsPosts' })
 export default class TagsPosts extends Model<TagsPosts> {
-  @Column({ allowNull: false })
-  text: string;
-
   @Column({
     type: DataType.INTEGER,
     unique: true,
