@@ -1,6 +1,6 @@
 import { Model, Table, Column, DataType, HasMany } from 'sequelize-typescript';
-import Post from '../../db/models/post.model';
 import { IsOptional, IsEmail } from 'class-validator';
+import Post from 'db/models/post.model';
 
 @Table({ tableName: 'Users', timestamps: true })
 export class User extends Model<User> {
