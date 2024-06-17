@@ -5,10 +5,12 @@ import {
   UpdatedAt,
   CreatedAt,
   DataType,
+  HasMany,
 } from 'sequelize-typescript';
+import Post from './post.model';
 
 @Table({ tableName: 'Users' })
-export default class User extends Model<User> {
+export class User extends Model<User> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -21,11 +23,14 @@ export default class User extends Model<User> {
   login: string;
 
   @Column
-  password : string;
-  
+  password: string;
+
   @UpdatedAt
   updatedAt: Date;
 
   @CreatedAt
   createdAt: Date;
+
+  @HasMany(() => Post)
+  posts: Post[];
 }

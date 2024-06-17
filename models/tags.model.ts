@@ -5,8 +5,9 @@ import {
   UpdatedAt,
   CreatedAt,
   DataType,
+  BelongsTo,
 } from 'sequelize-typescript';
-
+import PostTag from './tags-post.model';
 @Table({ tableName: 'Tags' })
 export default class Tag extends Model<Tag> {
   @Column({
@@ -25,4 +26,7 @@ export default class Tag extends Model<Tag> {
 
   @CreatedAt
   createdAt: Date;
+
+  @BelongsTo(() => PostTag)
+  postTag: PostTag;
 }
