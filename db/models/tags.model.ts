@@ -2,31 +2,25 @@ import {
   Model,
   Table,
   Column,
-  UpdatedAt,
-  CreatedAt,
   DataType,
-  BelongsTo,
+  BelongsToMany,
 } from 'sequelize-typescript';
-import PostTag from './tags-post.model';
-@Table({ tableName: 'Tags' })
+import Post from './post.model';
+import TagsPost from './tags-post.model';
+@Table({ tableName: 'Tags', timestamps: true })
 export default class Tag extends Model<Tag> {
   @Column({
     type: DataType.INTEGER,
-    unique: true,
     autoIncrement: true,
     primaryKey: true,
   })
   id: number;
 
-  @Column
+  @Column({
+    unique: true,
+  })
   name: string;
 
-  @UpdatedAt
-  updatedAt: Date;
-
-  @CreatedAt
-  createdAt: Date;
-
-  @BelongsTo(() => PostTag)
-  postTag: PostTag;
+  @BelongsToMany(() => Post, () => TagsPost)
+  posts: Post;
 }
